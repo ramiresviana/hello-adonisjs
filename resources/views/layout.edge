@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{{ title }}</title>
+</head>
+<body class="bg-gray-50 p-16">
+    <div class="container mx-auto">
+        <div class="text-2xl font-medium pb-5">{{ title }}</div>
+        <div class="p-5 drop-shadow bg-white rounded">
+            @!section('body')
+        </div>
+    </div>
+</body>
+</html>
