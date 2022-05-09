@@ -2,33 +2,33 @@
 @set('title', 'Clientes: Visualizar')
 
 @section('body')
-    <form class="block" action="{{ route('clients.store') }}" method="post">
+    <form class="block" action="{{ route('clients.update', [ client.id ], { qs: { _method: 'PATCH' } }) }}" method="post">
         <label class="block mb-1">Nome</label>
-        <input required class="w-full border rounded p-1 mb-3" type="text" name="name">
+        <input required class="w-full border rounded p-1 mb-3" type="text" name="name" value="{{ client.name }}">
 
         <label class="block mb-1">Telefone</label>
-        <input required class="w-full border rounded p-1 mb-3" type="text" name="phone">
+        <input required class="w-full border rounded p-1 mb-3" type="text" name="phone" value="{{ client.phone }}">
 
         <label class="block mb-1">Email</label>
-        <input required class="w-full border rounded p-1 mb-3" type="text" name="email">
+        <input readonly class="w-full border rounded p-1 mb-3" type="text" name="email" value="{{ client.email }}">
 
         <label class="block mb-1">Nascimento</label>
-        <input required class="w-full border rounded p-1 mb-3" type="date" name="birthday">
+        <input required class="w-full border rounded p-1 mb-3" type="date" name="birthday" value="{{ client.birthday }}">
 
         <div class="flex">
             <div class="basis-1/4 mr-2">
                 <label class="block mb-1">CEP</label>
-                <input required class="w-full border rounded p-1 mb-3" type="text" name="cep">
+                <input required class="w-full border rounded p-1 mb-3" type="text" name="cep" value="{{ client.cep }}">
             </div>
             <div class="flex-1">
                 <label class="block mb-1">Endereço</label>
-                <input required class="w-full border rounded p-1 mb-3" type="text" name="address">
+                <input required class="w-full border rounded p-1 mb-3" type="text" name="address" value="{{ client.address }}">
             </div>
         </div>
 
         <div class="text-right">
             <a class="bg-gray-200 p-2 mb-3 rounded inline-block" href="{{ route('clients.index') }}">Cancelar</a>
-            <a class="bg-blue-600 text-white p-2 mb-3 rounded inline-block" href="{{ route('clients.create') }}">Novo Cadastro</a>
+            <input class="bg-blue-600 text-white p-2 mt-3 rounded inline-block" type="submit">
         </div>
     </form>
 

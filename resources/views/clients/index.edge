@@ -14,42 +14,24 @@
             </tr>
         </thead>
         <tbody>
+@if (clients.length == 0)
+            <tr><td class="p-3">Nenhum registro encontrado.</td></tr>
+@else
+@each(client in clients)
             <tr class="border-b text-sm">
-                <td class="p-2 align-middle">100</td>
-                <td class="p-2 align-middle">Jorge Duarte da Silva</td>
-                <td class="p-2">9915-0031</td>
-                <td class="p-2">jorgesilva@gmail.com</td>
+                <td class="p-2 align-middle">{{ client.id }}</td>
+                <td class="p-2 align-middle">{{ client.name }}</td>
+                <td class="p-2">{{ client.phone }}</td>
+                <td class="p-2">{{ client.email }}</td>
                 <td class="p-2 text-right">
-                    <form class="inline-block" action="{{ route('clients.store') }}" method="post">
+                    <form class="inline-block" action="{{ route('clients.destroy', [ client.id ], { qs: { _method: 'DELETE' } }) }}" method="post">
                         <input class="bg-red-200 text-red-900 p-2 rounded inline-block" type="submit" value="Remover">
                     </form>
-                    <a class="bg-blue-200 text-blue-900 p-2 rounded inline-block" href="{{ route('clients.show', [1]) }}">Visualizar</a>
+                    <a class="bg-blue-200 text-blue-900 p-2 rounded inline-block" href="{{ route('clients.show', [ client.id ]) }}">Visualizar</a>
                 </td>
             </tr>
-            <tr class="border-b text-sm">
-                <td class="p-2 align-middle">100</td>
-                <td class="p-2 align-middle">Jorge Duarte da Silva</td>
-                <td class="p-2">9915-0031</td>
-                <td class="p-2">jorgesilva@gmail.com</td>
-                <td class="p-2 text-right">
-                    <form class="inline-block" action="{{ route('clients.store') }}" method="post">
-                        <input class="bg-red-200 text-red-900 p-2 rounded inline-block" type="submit" value="Remover">
-                    </form>
-                    <a class="bg-blue-200 text-blue-900 p-2 rounded inline-block" href="{{ route('clients.show', [1]) }}">Visualizar</a>
-                </td>
-            </tr>
-            <tr class="border-b text-sm">
-                <td class="p-2 align-middle">100</td>
-                <td class="p-2 align-middle">Jorge Duarte da Silva</td>
-                <td class="p-2">9915-0031</td>
-                <td class="p-2">jorgesilva@gmail.com</td>
-                <td class="p-2 text-right">
-                    <form class="inline-block" action="{{ route('clients.store') }}" method="post">
-                        <input class="bg-red-200 text-red-900 p-2 rounded inline-block" type="submit" value="Remover">
-                    </form>
-                    <a class="bg-blue-200 text-blue-900 p-2 rounded inline-block" href="{{ route('clients.show', [1]) }}">Visualizar</a>
-                </td>
-            </tr>
+@end
+@end
         </tbody>
     </table>
 @end
